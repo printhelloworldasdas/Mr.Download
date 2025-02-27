@@ -19,7 +19,6 @@
         <ul>  
             <li>✔️ Undetected Roblox executor</li>  
             <li>✔️ Compatible with Windows 10/11</li>  
-            <li>✔️ Safe</li>
         </ul>  
 
         <h3>Details:</h3>  
@@ -46,6 +45,21 @@
     </div>  
 
     <script src="assets/script.js"></script>  
+    <script>  
+        // Cambiar estado del botón y estilo cuando se aceptan los términos  
+        const acceptTermsCheckbox = document.getElementById('accept-terms');  
+        const downloadButton = document.getElementById('download-button');  
+
+        acceptTermsCheckbox.addEventListener('change', function() {  
+            if (this.checked) {  
+                downloadButton.removeAttribute('disabled');  
+                downloadButton.classList.add('enabled'); // Añadir clase para cambiar el estilo  
+            } else {  
+                downloadButton.setAttribute('disabled', true);  
+                downloadButton.classList.remove('enabled'); // Quitar clase para volver al estilo original  
+            }  
+        });  
+    </script>  
 </body>  
 
 </html>  

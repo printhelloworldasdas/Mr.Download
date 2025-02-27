@@ -1,83 +1,89 @@
-/* Estilos globales */
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    text-align: center;
-    padding: 20px;
-    color: #333;
-    margin: 0;
-}
+/* Estilos globales */  
+body {  
+    font-family: Arial, sans-serif;  
+    background: #f5f5f5;  
+    text-align: center;  
+    padding: 20px;  
+    color: #333;  
+    margin: 0;  
+}  
 
-/* Contenedor principal */
-.contenedor {
-    max-width: 800px;
-    margin: 0 auto;
-}
+/* Contenedor principal */  
+.contenedor {  
+    max-width: 800px;  
+    margin: 0 auto;  
+}  
 
-/* Estilo de las apps */
-.app {
-    margin: 20px 0;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+/* Estilo de las apps */  
+.app {  
+    margin: 20px 0;  
+    padding: 20px;  
+    background: white;  
+    border-radius: 12px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
+}  
 
-.app img {
-    max-width: 120px;
-    border-radius: 8px;
-}
+.app img {  
+    max-width: 120px;  
+    border-radius: 8px;  
+}  
 
-/* Botón de acción */
-.boton {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    text-decoration: none;
-    background: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+/* Botón de acción */  
+.boton {  
+    display: inline-block;  
+    padding: 10px 20px;  
+    margin-top: 20px;  
+    text-decoration: none;  
+    background: #007bff; /* Color por defecto */  
+    color: white;  
+    border-radius: 5px;  
+    cursor: pointer;  
+    transition: background 0.3s;  
+}  
 
-.boton:hover {
-    background: #0056b3;
-}
+.boton:hover {  
+    background: #0056b3;  
+}  
 
-/* Desactivar botón de descarga */
-.boton[disabled] {
-    background: #ccc;
-    cursor: not-allowed;
-}
+/* Desactivar botón de descarga */  
+.boton[disabled] {  
+    background: #ccc;  
+    cursor: not-allowed;  
+}  
 
-/* Animaciones de entrada */
-.animar-titulo {
-    animation: aparecer 1s ease-out;
-}
+/* Botón habilitado */  
+.boton.enabled {  
+    background: #4CAF50; /* Color verde */  
+    color: white; /* Texto blanco */  
+}  
 
-.animar-app {
-    animation: deslizar 0.8s ease-out;
-}
+/* Animaciones de entrada */  
+.animar-titulo {  
+    animation: aparecer 1s ease-out;  
+}  
 
-/* Keyframes */
-@keyframes aparecer {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+.animar-app {  
+    animation: deslizar 0.8s ease-out;  
+}  
 
-@keyframes deslizar {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* Keyframes */  
+@keyframes aparecer {  
+    from { opacity: 0; }  
+    to { opacity: 1; }  
+}  
 
-/* Términos */
-#terminos {
-    margin-top: 30px;
-    padding: 15px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: left;
-}
+@keyframes deslizar {  
+    from { opacity: 0; transform: translateY(20px); }  
+    to { opacity: 1; transform: translateY(0); }  
+}  
+
+/* Términos */  
+#terminos {  
+    margin-top: 30px;  
+    padding: 15px;  
+    background: #fff;  
+    border: 1px solid #ddd;  
+    border-radius: 8px;  
+    text-align: left;  
+}  

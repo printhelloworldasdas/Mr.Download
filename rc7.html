@@ -52,11 +52,11 @@
 
         acceptTermsCheckbox.addEventListener('change', function() {  
             if (this.checked) {  
-                downloadButton.removeAttribute('disabled');  
+                downloadButton.removeAttribute('disabled'); // Habilitar el botón  
                 downloadButton.classList.add('enabled'); // Añadir clase para cambiar el estilo  
             } else {  
-                downloadButton.setAttribute('disabled', true);  
-                downloadButton.classList.remove('enabled'); // Quitar clase para volver al estilo original  
+                downloadButton.setAttribute('disabled', true); // Deshabilitar el botón  
+                downloadButton.classList.remove('enabled'); // Quitar la clase para volver al estilo original  
             }  
         });  
     </script>  

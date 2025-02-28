@@ -1,17 +1,31 @@
-// Esperar a que cargue el DOM
 document.addEventListener('DOMContentLoaded', () => {
-    const checkbox = document.getElementById('aceptar-terminos');
-    const botonDescarga = document.getElementById('boton-descarga');
+    // --- Contador de visitas ---
+    const visitCounter = document.getElementById('visit-counter');
+    if (visitCounter) {
+        let visits = localStorage.getItem('visitCount') || 0;
+        visits++;
+        localStorage.setItem('visitCount', visits);
+        visitCounter.textContent = `👁️ Visits: ${visits}`;
+    }
 
-    // Deshabilitar botón al inicio
-    botonDescarga.setAttribute('disabled', 'true');
+    // --- Cambio de tema ---
+    const themeToggle = document.getElementById('theme-toggle');
 
-    // Habilitar botón si acepta los términos
-    checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-            botonDescarga.removeAttribute('disabled');
+    // Cargar el tema guardado
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.add('light-mode');
+    }
+
+    // Alternar el tema
+    themeToggle.addEventListener('click', () => {
+        if (document.body.classList.contains('light-mode')) {
+            document.body.classList.replace('light-mode', 'dark-mode');
+            localStorage.setItem('theme', 'dark');
         } else {
-            botonDescarga.setAttribute('disabled', 'true');
+            document.body.classList.replace('dark-mode', 'light-mode');
+            localStorage.setItem('theme', 'light');
         }
     });
 });

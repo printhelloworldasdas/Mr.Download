@@ -1,19 +1,17 @@
-/* ---- Estilos Generales ---- */
+/* ---- General ---- */
 :root {
-    /* Colores principales */
-    --color-fondo: #ffffff; /* Fondo claro */
-    --color-texto: #333333; /* Texto oscuro */
-    --color-primario: #4CAF50; /* Verde principal */
-    --color-secundario: #2c3e50; /* Azul oscuro */
-    --color-hover: #45a049; /* Hover para botones */
+    --color-fondo: #ffffff;
+    --color-texto: #333333;
+    --color-primario: #4CAF50;
+    --color-secundario: #2c3e50;
+    --color-hover: #45a049;
 
     /* Tema oscuro */
-    --color-fondo-oscuro: #1a1a1a; /* Fondo oscuro */
-    --color-texto-oscuro: #e0e0e0; /* Texto claro */
-    --color-hover-oscuro: #3e8e41; /* Hover oscuro */
+    --color-fondo-oscuro: #1a1a1a;
+    --color-texto-oscuro: #e0e0e0;
+    --color-hover-oscuro: #3e8e41;
 }
 
-/* Aplicar variables según el tema */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--color-fondo);
@@ -21,7 +19,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color 0.4s, color 0.4s; /* Suave transición al cambiar de tema */
+    transition: background-color 0.4s, color 0.4s;
 }
 
 /* Tema oscuro */
@@ -30,23 +28,79 @@ body.dark-mode {
     color: var(--color-texto-oscuro);
 }
 
-/* ---- Contenedor Principal ---- */
+/* ---- Contenedor ---- */
 .contenedor {
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    border-radius: 20px; /* Esquinas redondeadas */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
 }
 
-/* ---- Encabezados ---- */
+/* ---- Título ---- */
 h1 {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 20px;
 }
 
-/* Animación para los títulos */
+/* ---- Imágenes ---- */
+.img-rounded {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Botones ---- */
+.boton {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    background-color: var(--color-primario);
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Ajuste para los botones dentro de las tarjetas */
+.btn-info {
+    display: block;
+    text-align: center;
+    margin: 20px auto 0; /* Centrado */
+    width: 80%; /* Limitar ancho */
+}
+
+/* Hover de botones */
+.boton:hover {
+    background-color: var(--color-hover);
+    transform: translateY(-2px);
+}
+
+/* Botón de tema */
+#theme-toggle {
+    display: block;
+    margin: 20px auto;
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--color-hover-oscuro);
+    transform: scale(1.05);
+}
+
+/* ---- Animaciones ---- */
 .animar-titulo {
     animation: slideIn 1s ease-in-out;
 }
@@ -62,95 +116,6 @@ h1 {
     }
 }
 
-/* ---- Imágenes ---- */
-img {
-    display: block; /* Evita el espacio debajo de las imágenes */
-    margin: 0 auto; /* Centrar imágenes */
-    max-width: 100%;
-    height: auto; /* Mantener proporciones */
-}
-
-/* Imágenes con esquinas redondeadas (rc7.html y memesense.html) */
-.img-rounded {
-    border-radius: 20px; /* Esquinas redondeadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-}
-
-/* ---- Botones ---- */
-.boton {
-    display: inline-block;
-    padding: 12px 24px;
-    margin-top: 20px;
-    font-size: 1rem;
-    text-align: center;
-    color: white;
-    background-color: var(--color-primario);
-    border: none;
-    border-radius: 10px; /* Esquinas redondeadas */
-    text-decoration: none; /* Quitar subrayado */
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-/* Efecto hover en botones */
-.boton:hover {
-    background-color: var(--color-hover);
-    transform: translateY(-2px); /* Efecto de elevación */
-}
-
-/* Botón deshabilitado */
-.boton:disabled {
-    background-color: #a0a0a0;
-    cursor: not-allowed;
-}
-
-/* Botón de regreso */
-.back {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: var(--color-secundario);
-    text-decoration: none;
-}
-
-.back:hover {
-    text-decoration: underline;
-}
-
-/* ---- Contador de visitas ---- */
-#visit-counter {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-}
-
-/* ---- Términos y condiciones ---- */
-#terms {
-    margin-top: 40px;
-    padding: 20px;
-    border-top: 2px solid var(--color-secundario);
-}
-
-/* ---- Cambio de tema (Toggle Button) ---- */
-#theme-toggle {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: var(--color-secundario);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-/* Efecto hover en el botón de tema */
-#theme-toggle:hover {
-    background-color: var(--color-hover-oscuro);
-    transform: scale(1.05); /* Ligero agrandamiento */
-}
-
-/* ---- Animaciones para las tarjetas ---- */
 .animar-app {
     animation: fadeIn 1s ease-in-out;
 }
@@ -164,17 +129,17 @@ img {
     }
 }
 
-/* ---- Responsividad ---- */
+/* Responsividad */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.5rem; /* Ajustar tamaño del título */
+        font-size: 2.5rem;
     }
 
     .contenedor {
-        padding: 15px; /* Reducir espacio */
+        padding: 15px;
     }
 
-    .boton {
-        width: 100%; /* Botones de ancho completo en pantallas pequeñas */
+    .btn-info {
+        width: 100%; /* Botones ocupan todo el ancho en móviles */
     }
 }

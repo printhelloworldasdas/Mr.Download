@@ -1,55 +1,60 @@
-/* ======= Variables globales para Light y Dark Mode ======= */
+/* ---- Estilos Generales ---- */
 :root {
-    /* Light Mode (Predeterminado) */
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --card-bg: #f9f9f9;
-    --button-bg: #4CAF50;
-    --button-hover: #45a049;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    /* Colores principales */
+    --color-fondo: #ffffff; /* Fondo claro */
+    --color-texto: #333333; /* Texto oscuro */
+    --color-primario: #4CAF50; /* Verde principal */
+    --color-secundario: #2c3e50; /* Azul oscuro */
+    --color-hover: #45a049; /* Hover para botones */
+
+    /* Tema oscuro */
+    --color-fondo-oscuro: #1a1a1a; /* Fondo oscuro */
+    --color-texto-oscuro: #e0e0e0; /* Texto claro */
+    --color-hover-oscuro: #3e8e41; /* Hover oscuro */
 }
 
-/* Dark Mode */
-.dark-mode {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --card-bg: #1e1e1e;
-    --button-bg: #6c63ff;
-    --button-hover: #5a52d4;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-}
-
-/* ======= Estilo Global ======= */
+/* Aplicar variables según el tema */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 0.4s, color 0.4s; /* Suave transición al cambiar de tema */
 }
 
-/* ======= Contenedor Principal ======= */
+/* Tema oscuro */
+body.dark-mode {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-oscuro);
+}
+
+/* ---- Contenedor Principal ---- */
 .contenedor {
-    max-width: 1200px;
-    margin: auto;
+    max-width: 900px;
+    margin: 40px auto;
     padding: 20px;
-    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 20px; /* Esquinas redondeadas */
 }
 
-/* ======= Encabezado Animado ======= */
+/* ---- Encabezados ---- */
 h1 {
+    text-align: center;
     font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: fadeIn 1s ease-in-out;
+    margin-bottom: 20px;
 }
 
-/* Animación de entrada */
-@keyframes fadeIn {
+/* Animación para los títulos */
+.animar-titulo {
+    animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
@@ -57,109 +62,119 @@ h1 {
     }
 }
 
-/* ======= Botón de Cambio de Tema ======= */
-#theme-toggle {
-    background: var(--button-bg);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
+/* ---- Imágenes ---- */
+img {
+    display: block; /* Evita el espacio debajo de las imágenes */
+    margin: 0 auto; /* Centrar imágenes */
+    max-width: 100%;
+    height: auto; /* Mantener proporciones */
 }
 
-#theme-toggle:hover {
-    background: var(--button-hover);
+/* Imágenes con esquinas redondeadas (rc7.html y memesense.html) */
+.img-rounded {
+    border-radius: 20px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
-/* ======= Tarjetas de las Aplicaciones ======= */
-.app {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 12px;
-    margin: 20px auto;
-    max-width: 400px;
-    box-shadow: 0 4px 8px var(--shadow-color);
-    transition: background 0.5s, box-shadow 0.5s;
-}
-
-/* Animación de las tarjetas */
-.animar-app {
-    animation: slideUp 0.8s ease;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ======= Imágenes en las Tarjetas ======= */
-.app img {
-    max-width: 200px; /* Ajusta el tamaño de las imágenes */
-    height: auto; 
-    display: block; 
-    margin: 0 auto; /* Centra la imagen */
-    border-radius: 12px; /* Esquinas redondeadas para las imágenes */
-}
-
-/* ======= Botones de Descargar ======= */
+/* ---- Botones ---- */
 .boton {
     display: inline-block;
-    text-decoration: none;
-    color: white;
-    background: var(--button-bg);
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin-top: 10px;
-    transition: background 0.3s;
-}
-
-.boton:hover {
-    background: var(--button-hover);
-}
-
-/* ======= Botón de Regresar ======= */
-.back {
-    display: inline-block;
+    padding: 12px 24px;
     margin-top: 20px;
-    color: var(--text-color);
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    background-color: var(--color-primario);
+    border: none;
+    border-radius: 10px; /* Esquinas redondeadas */
+    text-decoration: none; /* Quitar subrayado */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto hover en botones */
+.boton:hover {
+    background-color: var(--color-hover);
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Botón deshabilitado */
+.boton:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+/* Botón de regreso */
+.back {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: var(--color-secundario);
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: opacity 0.3s;
 }
 
 .back:hover {
-    opacity: 0.7;
+    text-decoration: underline;
 }
 
-/* ======= Contador de Visitas ======= */
+/* ---- Contador de visitas ---- */
 #visit-counter {
+    text-align: center;
+    margin-bottom: 20px;
     font-size: 1.2rem;
-    margin-top: 20px;
 }
 
-/* ======= Términos y Condiciones ======= */
+/* ---- Términos y condiciones ---- */
 #terms {
     margin-top: 40px;
-    text-align: left;
     padding: 20px;
-    border-top: 1px solid var(--text-color);
+    border-top: 2px solid var(--color-secundario);
 }
 
-/* ======= Adaptabilidad (Responsive Design) ======= */
+/* ---- Cambio de tema (Toggle Button) ---- */
+#theme-toggle {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto hover en el botón de tema */
+#theme-toggle:hover {
+    background-color: var(--color-hover-oscuro);
+    transform: scale(1.05); /* Ligero agrandamiento */
+}
+
+/* ---- Animaciones para las tarjetas ---- */
+.animar-app {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---- Responsividad ---- */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem; /* Ajustar tamaño de título */
+        font-size: 2.5rem; /* Ajustar tamaño del título */
     }
 
-    .app {
-        max-width: 90%; /* Ocupa más ancho en pantallas pequeñas */
+    .contenedor {
+        padding: 15px; /* Reducir espacio */
+    }
+
+    .boton {
+        width: 100%; /* Botones de ancho completo en pantallas pequeñas */
     }
 }

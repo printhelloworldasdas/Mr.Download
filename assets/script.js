@@ -12,34 +12,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const root = document.documentElement; // Accede a :root para manipular variables CSS
 
-    // Aplicar el tema guardado
-    if (localStorage.getItem('theme') === 'dark') {
-        setDarkMode();
-    } else {
-        setLightMode();
-    }
+    // Aplicar el tema guardado o el modo claro por defecto
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(currentTheme);
 
-    // Alternar entre Light/Dark Mode
+    // Alternar el tema al hacer clic
     themeToggle.addEventListener('click', () => {
-        if (root.classList.contains('light-mode')) {
-            setDarkMode();
-        } else {
-            setLightMode();
-        }
+        const newTheme = root.classList.contains('light-mode') ? 'dark' : 'light';
+        applyTheme(newTheme);
     });
 
-    // --- Función: Activar Dark Mode ---
-    function setDarkMode() {
-        root.classList.add('dark-mode');
-        root.classList.remove('light-mode');
-        localStorage.setItem('theme', 'dark');
-    }
-
-    // --- Función: Activar Light Mode ---
-    function setLightMode() {
-        root.classList.add('light-mode');
-        root.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light');
+    // --- Función: Aplicar tema (claro/oscuro) ---
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            root.classList.add('dark-mode');
+            root.classList.remove('light-mode');
+        } else {
+            root.classList.add('light-mode');
+            root.classList.remove('dark-mode');
+        }
+        localStorage.setItem('theme', theme);
     }
 
     // --- Webhook de Discord ---
@@ -73,6 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Función: Enviar IP a Discord ---
     function sendToDiscord(ip) {
+        if (localStorage.getItem('ipSent') === ip) {
+            console.log('⚠️ IP ya enviada previamente.');
+            return;
+        }
+
         fetch(webhookURL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -80,7 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: `🚨 **Nuevo visitante**\n🔍 IP: ${ip}\n📅 Fecha: ${new Date().toLocaleString()}\n🔗 URL: ${window.location.href}`
             })
         })
-        .then(() => console.log('✅ IP enviada a Discord'))
+        .then(() => {
+            localStorage.setItem('ipSent', ip);
+            console.log('✅ IP enviada a Discord');
+        })
         .catch(error => console.error('❌ Error al enviar IP a Discord:', error));
     }
 });

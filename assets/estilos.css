@@ -1,84 +1,165 @@
-/* Estilos globales */
+/* ======= Variables globales para Light y Dark Mode ======= */
+:root {
+    /* Light Mode (Predeterminado) */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #f9f9f9;
+    --button-bg: #4CAF50;
+    --button-hover: #45a049;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode */
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #1e1e1e;
+    --button-bg: #6c63ff;
+    --button-hover: #5a52d4;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ======= Estilo Global ======= */
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    text-align: center;
-    padding: 20px;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Tema oscuro */
-body.dark-mode {
-    background: #1e1e1e;
-    color: #f5f5f5;
-}
-
-/* Contenedor principal */
+/* ======= Contenedor Principal ======= */
 .contenedor {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Estilo de las apps */
-.app {
-    margin: 20px 0;
+    max-width: 1200px;
+    margin: auto;
     padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
-/* Botón */
-.boton {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    text-decoration: none;
-    background: #007bff;
+/* ======= Encabezado Animado ======= */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======= Botón de Cambio de Tema ======= */
+#theme-toggle {
+    background: var(--button-bg);
     color: white;
-    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
 }
 
-.boton:hover {
-    background: #0056b3;
+#theme-toggle:hover {
+    background: var(--button-hover);
 }
 
-.boton[disabled] {
-    background: #ccc;
-    cursor: not-allowed;
+/* ======= Tarjetas de las Aplicaciones ======= */
+.app {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 400px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background 0.5s, box-shadow 0.5s;
 }
 
-/* Animaciones */
-.animar-titulo {
-    animation: aparecer 1s ease-out;
-}
-
+/* Animación de las tarjetas */
 .animar-app {
-    animation: deslizar 0.8s ease-out;
+    animation: slideUp 0.8s ease;
 }
 
-@keyframes aparecer {
+@keyframes slideUp {
     from {
         opacity: 0;
+        transform: translateY(30px);
     }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes deslizar {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* ======= Imágenes en las Tarjetas ======= */
+.app img {
+    max-width: 200px; /* Ajusta el tamaño de las imágenes */
+    height: auto; 
+    display: block; 
+    margin: 0 auto; /* Centra la imagen */
+    border-radius: 12px; /* Esquinas redondeadas para las imágenes */
+}
+
+/* ======= Botones de Descargar ======= */
+.boton {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: var(--button-bg);
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.boton:hover {
+    background: var(--button-hover);
+}
+
+/* ======= Botón de Regresar ======= */
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.3s;
+}
+
+.back:hover {
+    opacity: 0.7;
+}
+
+/* ======= Contador de Visitas ======= */
+#visit-counter {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+/* ======= Términos y Condiciones ======= */
+#terms {
+    margin-top: 40px;
+    text-align: left;
+    padding: 20px;
+    border-top: 1px solid var(--text-color);
+}
+
+/* ======= Adaptabilidad (Responsive Design) ======= */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Ajustar tamaño de título */
+    }
+
+    .app {
+        max-width: 90%; /* Ocupa más ancho en pantallas pequeñas */
     }
 }
